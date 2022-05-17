@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <title>1D CONSOLE: REACTION</title>
+    </head>
+    <body id="pixel" style="background-color:#000000">
+        <script>
+
+            //start code
+            var i = 0;
+            var pixel = document.getElementById("pixel");
+            function set(color) {
+                pixel.style = "background-color:" + color;
+            }
+
+            //unlooping program code
+            var object = 0;
+            var count = -1;
+            var end = 0;
+            document.addEventListener("mouseup", function() {
+                if (end == 0) {
+                    object = 0;
+                    count = -1;
+                }
+            });
+
+            //looping setup code
+            function start() {
+                if (i == 0) {
+                    set("#ffc040");
+                }
+                if (i == 32) {
+                    set("#ff0000");
+                }
+                if (i == 64) {
+                    set("#00ff00");
+                }
+                if (i == 96) {
+                    set("#0000ff");
+                }
+                if (i == 128) {
+                    set("#ffc040");
+                }
+                if (i >= 160) {
+
+                    //looping program code
+                    if (i % 64 == 0) {
+                        if (Math.random() > 0.75) {
+                            object = 1;
+                            count = 64;
+                        }
+                    }
+                    if (object == 0) {
+                        set("#ffffff");
+                    } else {
+                        set("#ff8080");
+                    }
+                    if (count == 0) {
+                            set("#ff0000");
+                            count = 1;
+                            i = 161;
+                            end = 1;
+                        }
+                    count--;
+                }
+
+                //game tick code
+                i++;
+            }
+
+            //looping setup code
+            setInterval(start,1000/64);
+        </script>
+    </body>
+</html>
